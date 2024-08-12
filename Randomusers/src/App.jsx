@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 function App() {
   return (
     <Router>
-      <Navbar />
+    
       <Routes>
         <Route path="/" element={<Navigate to="/random-user" />} />
         <Route path="/random-user" element={<RandomUserProfile />} />
