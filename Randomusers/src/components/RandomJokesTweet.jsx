@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FaRegComment, FaRetweet, FaRegHeart, FaRegBookmark, FaPaperPlane, FaArrowLeft } from 'react-icons/fa';
-import { BsUpload } from "react-icons/bs";
+import { BsUpload } from 'react-icons/bs';
+import { MdVerified } from 'react-icons/md';
+import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 import { format } from 'date-fns'; // Import date-fns
 
 const RandomJokeTweet = () => {
@@ -44,12 +46,18 @@ const RandomJokeTweet = () => {
 
         {/* Main content */}
         <div className='p-4'>
-          <div className='flex items-center'>
-            <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Profile" className='w-12 h-12 rounded-full mr-4' />
-            <div className='flex flex-col'>
-              <span className='font-bold'>Elon Musk</span>
-              <span className='text-gray-400 text-sm'>@elonmusk</span>
+          <div className='flex items-center justify-between'>
+            <div className='flex items-center'>
+              <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Profile" className='w-12 h-12 rounded-full mr-4' />
+              <div className='flex flex-col'>
+                <span className='font-bold flex items-center'>
+                  Elon Musk
+                  <MdVerified className='text-blue-500 ml-1' />
+                </span>
+                <span className='text-gray-400 text-sm'>@elonmusk</span>
+              </div>
             </div>
+            <HiOutlineDotsHorizontal className='text-gray-400 text-2xl' />
           </div>
           <div className='mt-4'>
             <p className='text-lg'>{joke ? joke.content : 'No joke available'}</p>
@@ -61,28 +69,28 @@ const RandomJokeTweet = () => {
 
         {/* Footer with icons and counts */}
         <div className='w-full border-t border-gray-800 p-5 flex items-center justify-around text-gray-400'>
-      <div className='flex flex-1 justify-around'>
-        <div className='flex items-center space-x-2'>
-          <FaRegComment className='text-xl' />
-          <span>12</span>
+          <div className='flex flex-1 justify-around'>
+            <div className='flex items-center space-x-2'>
+              <FaRegComment className='text-xl' />
+              <span>12</span>
+            </div>
+            <div className='flex items-center space-x-2'>
+              <FaRetweet className='text-xl' />
+              <span>45</span>
+            </div>
+            <div className='flex items-center space-x-2'>
+              <FaRegHeart className='text-xl' />
+              <span>78</span>
+            </div>
+            <div className='flex items-center space-x-2'>
+              <FaRegBookmark className='text-xl' />
+              <span>22</span>
+            </div>
+            <div className='flex items-center space-x-2'>
+              <BsUpload className='text-xl' />
+            </div>
+          </div>
         </div>
-        <div className='flex items-center space-x-2'>
-          <FaRetweet className='text-xl' />
-          <span>45</span>
-        </div>
-        <div className='flex items-center space-x-2'>
-          <FaRegHeart className='text-xl' />
-          <span>78</span>
-        </div>
-        <div className='flex items-center space-x-2'>
-          <FaRegBookmark className='text-xl' />
-          <span>22</span>
-        </div>
-        <div className='flex items-center space-x-2'>
-          <BsUpload className='text-xl' />
-        </div>
-      </div>
-    </div>
 
         {/* Additional footer line */}
         <div className='text-center py-2 text-white'>
