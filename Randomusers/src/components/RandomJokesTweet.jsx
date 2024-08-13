@@ -5,6 +5,7 @@ import { BsUpload } from 'react-icons/bs';
 import { MdVerified } from 'react-icons/md';
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 import { format } from 'date-fns'; // Import date-fns
+import cup from '../assets/cup-logo.svg'; // Import Chaicode logo
 
 const RandomJokeTweet = () => {
   const [joke, setJoke] = useState(null);
@@ -33,7 +34,7 @@ const RandomJokeTweet = () => {
   const formattedViews = views.toLocaleString(); 
 
   return (
-    <div className='flex items-center justify-center min-h-screen bg-gray-100 p-4'>
+    <div className='relative flex items-center justify-center min-h-screen bg-gray-100 p-4'>
       <div className='w-full max-w-lg bg-black text-white rounded-lg shadow-lg'>
         {/* Header with Back button and Post label */}
         <div className='flex items-center justify-between p-4 border-b border-gray-800'>
@@ -96,6 +97,13 @@ const RandomJokeTweet = () => {
         <div className='text-center py-2 text-white'>
           <span>@chai aur code</span>
         </div>
+      </div>
+
+      {/* Chaicode logo in bottom-right corner */}
+      <div className='absolute bottom-4 right-4'>
+        <a href='https://chaicode.com' target="_blank" rel="noopener noreferrer" className='flex items-center justify-center bg-black p-2 rounded-lg'>
+          <img src={cup} alt='Chaicode Logo' className='w-12 h-12 rounded-lg' />
+        </a>
       </div>
     </div>
   );
