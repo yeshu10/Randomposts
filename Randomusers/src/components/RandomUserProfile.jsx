@@ -43,25 +43,30 @@ const RandomUserProfile = () => {
         {user && (
           <div className='text-center relative'>
           {/* Title overlay */}
-          <div className='absolute top-0 right-16 bg-black text-white px-2 py-1 rounded-lg text-sm font-semibold inline-block'>
-      {user.name.title} {/* Display title */}
-    </div>
-            <img src={user.picture.large || 'https://via.placeholder.com/150'} alt="User" className='rounded-full w-32 h-32 mb-4 mx-auto' />
-            <p className='text-lg font-semibold'>{user.name.first} {user.name.last}</p>
+          <div className='absolute -top-2 right-14 bg-black text-white px-2 py-1 rounded-lg text-sm font-semibold'>
+            {user.name.title} {/* Display title */}
+          </div>
+          <img src={user.picture.large || 'https://via.placeholder.com/150'} alt="User" className='rounded-full w-32 h-32 mb-4 mx-auto' />            <p className='text-xl font-semibold mb-4'>{user.name.first} {user.name.last}</p>
+            <div className='mb-4'>{user.login.username}</div>
+
+            <hr className='my-4 border-gray-400' />
+
             <div className='flex items-center justify-center mb-4 space-x-4'>
               <a href={`https://www.google.com/maps?q=${user.location.street.number} ${user.location.street.name}, ${user.location.city}, ${user.location.state}, ${user.location.country}`} target="_blank" rel="noopener noreferrer" className='flex items-center space-x-2'>
-                <div className='inline-flex items-center justify-center w-8 h-8 bg-black text-white rounded-full'>
-                  <FaMapMarkerAlt size={16} />
+                <div className='inline-flex items-center justify-center w-6 h-6 bg-black text-white rounded-full'>
+                  <FaMapMarkerAlt size={14} />
                 </div>
                 <span className='font-semibold'>Location</span>
               </a>
               <a href={`tel:${user.phone}`} className='flex items-center space-x-2'>
-                <div className='inline-flex items-center justify-center w-8 h-8 bg-black text-white rounded-full'>
-                  <FaPhoneAlt size={16} />
+                <div className='inline-flex items-center justify-center w-6 h-6 bg-black text-white rounded-full'>
+                  <FaPhoneAlt size={14} />
                 </div>
                 <span>Call me</span>
               </a>
             </div>
+            <hr className='my-4 border-gray-400' />
+
             <div className='grid grid-cols-2 gap-4 text-left space-x-4'>
               <div>
                 <p className='text-xs mb-4'>
