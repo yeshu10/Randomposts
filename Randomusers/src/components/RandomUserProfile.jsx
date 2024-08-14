@@ -28,7 +28,7 @@ const RandomUserProfile = () => {
 
   return (
     <div className='flex items-center justify-center min-h-screen p-4'>
-      <div className='relative bg-blue-200 p-6 rounded-lg text-black w-full max-w-md h-3/4'>
+      <div className='relative bg-purple-300 p-6 rounded-lg text-black w-full max-w-md h-3/4'>
         <div className='absolute top-4 left-4'>
           <button className='text-black hover:text-gray-600'>
             <FaArrowLeft size={24} />
@@ -41,7 +41,11 @@ const RandomUserProfile = () => {
         </div>
         <h1 className='text-xl font-bold text-center mb-4'>Profile Overview</h1>
         {user && (
-          <div className='text-center'>
+          <div className='text-center relative'>
+          {/* Title overlay */}
+          <div className='absolute top-0 right-16 bg-black text-white px-2 py-1 rounded-lg text-sm font-semibold inline-block'>
+      {user.name.title} {/* Display title */}
+    </div>
             <img src={user.picture.large || 'https://via.placeholder.com/150'} alt="User" className='rounded-full w-32 h-32 mb-4 mx-auto' />
             <p className='text-lg font-semibold'>{user.name.first} {user.name.last}</p>
             <div className='flex items-center justify-center mb-4 space-x-4'>
@@ -58,33 +62,33 @@ const RandomUserProfile = () => {
                 <span>Call me</span>
               </a>
             </div>
-            <div className='grid grid-cols-2 gap-4 text-left'>
+            <div className='grid grid-cols-2 gap-4 text-left space-x-4'>
               <div>
-                <p className='text-xs mb-2'>
-                  <span className='font-semibold'>City:</span><br />
-                  {user.location.city}
+                <p className='text-xs mb-4'>
+                  City:<br />
+                  <span className='font-semibold text-[16px]'>{user.location.city}</span>
                 </p>
-                <p className='text-xs mb-2'>
-                  <span className='font-semibold'>Date of Birth:</span><br />
-                  {user.dob.date}
+                <p className='text-xs mb-4'>
+                Date of Birth:<br />
+                <span className='font-semibold text-[16px]'>{user.dob.date}</span>                  
                 </p>
-                <p className='text-xs mb-2'>
-                  <span className='font-semibold'>Time Zone:</span><br />
-                  {user.location.timezone.offset}
+                <p className='text-xs mb-4'>
+                  Time Zone:<br />
+                  <span className='font-semibold text-[16px]'>{user.location.timezone.offset}</span>
                 </p>
               </div>
               <div>
-                <p className='text-xs mb-2'>
-                  <span className='font-semibold'>Nationality:</span><br />
-                  {user.nat}
+                <p className='text-xs mb-4'>
+              Nationality:<br />
+                  <span className='font-semibold text-[16px]'>{user.nat}</span>
                 </p>
-                <p className='text-xs mb-2'>
-                  <span className='font-semibold'>Phone:</span><br />
-                  {user.phone}
+                <p className='text-xs mb-4'>
+                  Phone:<br />
+                  <span className='font-semibold text-[16px]'>{user.phone}</span>
                 </p>
-                <p className='text-xs mb-2'>
-                  <span className='font-semibold'>Registered Since:</span><br />
-                  {user.registered.date}
+                <p className='text-xs mb-4'>
+                  Registered Since:<br />
+                  <span className='font-semibold text-[16px]'>{user.registered.date}</span>
                 </p>
               </div>
             </div>
