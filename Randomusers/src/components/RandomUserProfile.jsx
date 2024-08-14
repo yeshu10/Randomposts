@@ -91,14 +91,17 @@ const RandomUserProfile = () => {
                   Phone:<br />
                   <span className='font-semibold text-[16px]'>{user.phone}</span>
                 </p>
-                <p className='text-xs mb-4'>
+                <p className='text-xs mb-16'>
                   Registered Since:<br />
                   <span className='font-semibold text-[16px]'>{user.registered.date}</span>
                 </p>
               </div>
             </div>
-            <div className='mt-6 flex justify-end'>
-              <a href='https://chaicode.com' target="_blank" rel="noopener noreferrer" className='flex items-center justify-center bg-black p-2 rounded-lg'>
+            <div className='relative mt-14 flex items-center justify-center'>
+              <span className='text-white absolute left-1/2 transform -translate-x-1/2'>
+                @chai aur code
+              </span>
+              <a href='https://chaicode.com' target="_blank" rel="noopener noreferrer" className='absolute bottom-0 right-0 flex items-center justify-center bg-black p-2 rounded-lg'>
                 <img src={cup} alt='Chaicode Logo' className='w-12 h-12 rounded-lg' />
               </a>
             </div>
@@ -110,3 +113,4 @@ const RandomUserProfile = () => {
 };
 
 export default RandomUserProfile;
+
