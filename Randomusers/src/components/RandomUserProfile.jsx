@@ -30,7 +30,7 @@ const RandomUserProfile = () => {
   return (
     <div className='relative min-h-screen bg-cover bg-center' style={{ backgroundImage: `url(${background})` }}>
       <div className='flex items-center justify-center min-h-screen p-4'>
-        <div className='relative bg-purple-300 p-6 rounded-xl text-black w-full max-w-md h-3/4 border-8 border-white m-8'>
+        <div className='relative bg-purple-300 p-6 rounded-xl text-black w-full max-w-md h-auto border-8 border-white m-8'>
           <div className='absolute top-4 left-4'>
             <button className='text-black hover:text-gray-600'>
               <FaArrowLeft size={24} />
@@ -45,7 +45,7 @@ const RandomUserProfile = () => {
           {user && (
             <div className='text-center relative'>
               {/* Title overlay */}
-              <div className='absolute -top-2 right-16 bg-black text-white px-2 py-1 rounded-lg text-sm font-semibold transform -translate-x-6'>
+              <div className='absolute top-[-20px] right-4 bg-black text-white px-2 py-1 rounded-lg text-sm font-semibold transform -translate-x-4 md:-translate-x-16'>
                 {user.name.title} {/* Display title */}
               </div>
               <img src={user.picture.large || 'https://via.placeholder.com/150'} alt="User" className='rounded-full w-32 h-32 mb-4 mx-auto' />            
@@ -54,7 +54,7 @@ const RandomUserProfile = () => {
 
               <hr className='my-4 border-gray-400' />
 
-              <div className='flex items-center justify-center mb-4 space-x-4'>
+              <div className='flex flex-wrap items-center justify-center mb-4 space-x-4 space-y-2'>
                 <a href={`https://www.google.com/maps?q=${user.location.street.number} ${user.location.street.name}, ${user.location.city}, ${user.location.state}, ${user.location.country}`} target="_blank" rel="noopener noreferrer" className='flex items-center space-x-2'>
                   <div className='inline-flex items-center justify-center w-6 h-6 bg-black text-white rounded-full'>
                     <FaMapMarkerAlt size={14} />
@@ -70,7 +70,7 @@ const RandomUserProfile = () => {
               </div>
               <hr className='my-4 border-gray-400' />
 
-              <div className='grid grid-cols-2 gap-4 text-left space-x-4'>
+              <div className='grid grid-cols-1 md:grid-cols-2 gap-4 text-left'>
                 <div>
                   <p className='text-xs mb-4'>
                     City:<br />
@@ -101,7 +101,7 @@ const RandomUserProfile = () => {
                 </div>
               </div>
               <div className='relative mt-14 flex items-center justify-center'>
-                <span className='text-white absolute left-1/2 transform -translate-x-1/2'>
+                <span className='text-white absolute left-1/2 transform -translate-x-1/2 text-xs md:text-base'>
                   @chai aur code
                 </span>
                 <a href='https://chaicode.com' target="_blank" rel="noopener noreferrer" className='absolute bottom-0 right-0 flex items-center justify-center bg-black p-2 rounded-lg'>
