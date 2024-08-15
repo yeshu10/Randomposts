@@ -25,6 +25,16 @@ const RandomUserProfile = () => {
     fetchUser(); // Fetch user data on component mount
   }, []);
 
+   // Function to format date
+   const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: 'long',
+      year: 'numeric'
+    });
+  };
+
   if (loading) return <div className='p-4'>Loading...</div>;
 
   return (
@@ -35,7 +45,7 @@ const RandomUserProfile = () => {
             <button className='text-black hover:text-gray-600'>
               <FaArrowLeft size={24} />
             </button>
-          </div>
+          </div> 
           <div className='absolute top-4 right-4'>
             <button className='text-black hover:text-gray-600' onClick={() => fetchUser()}>
               <FaRedo size={24} />
@@ -54,9 +64,9 @@ const RandomUserProfile = () => {
 
               <hr className='my-4 border-gray-400' />
 
-              <div className='flex flex-wrap items-center justify-center mb-4 space-x-4 space-y-2'>
+              <div className='flex flex-wrap items-center justify-center mb-4 space-x-4 '>
                 <a href={`https://www.google.com/maps?q=${user.location.street.number} ${user.location.street.name}, ${user.location.city}, ${user.location.state}, ${user.location.country}`} target="_blank" rel="noopener noreferrer" className='flex items-center space-x-2'>
-                  <div className='inline-flex items-center justify-center w-6 h-6 bg-black text-white rounded-full'>
+                  <div className='inline-flex items-center justify-center w-6 h-6 bg-black border-black file:text-white rounded-full'>
                     <FaMapMarkerAlt size={14} />
                   </div>
                   <span className='font-semibold'>Location</span>
@@ -78,7 +88,7 @@ const RandomUserProfile = () => {
                   </p>
                   <p className='text-xs mb-4'>
                     Date of Birth:<br />
-                    <span className='font-semibold text-[16px]'>{user.dob.date}</span>                  
+                    <span className='font-semibold text-[16px]'>{formatDate(user.dob.date)}</span>                  
                   </p>
                   <p className='text-xs mb-4'>
                     Time Zone:<br />
@@ -96,7 +106,7 @@ const RandomUserProfile = () => {
                   </p>
                   <p className='text-xs mb-16'>
                     Registered Since:<br />
-                    <span className='font-semibold text-[16px]'>{user.registered.date}</span>
+                    <span className='font-semibold text-[16px]'>{formatDate(user.registered.date)}</span>
                   </p>
                 </div>
               </div>
