@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { FaSpinner } from 'react-icons/fa'; // Spinner for loading state
 import cup from '../assets/cup-logo.svg'; // Import Chaicode logo
@@ -6,9 +6,10 @@ import pexelsgrey from '../assets/pexelsgrey.jpg'; // Import background image
 
 const CatsListing = () => {
   const [cats, setCats] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
+  const containerRef = useRef(null);
 
   const fetchCats = async (pageNumber) => {
     setLoading(true);
@@ -20,7 +21,6 @@ const CatsListing = () => {
         setHasMore(false);
       } else {
         setCats((prevCats) => [...prevCats, ...data.data]);
-        setHasMore(data.nextPage);
       }
     } catch (error) {
       console.error('Error fetching cats data:', error);
@@ -33,6 +33,29 @@ const CatsListing = () => {
     fetchCats(page); // Fetch initial page
   }, [page]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const container = containerRef.current;
+      if (container) {
+        const isBottom = container.scrollWidth - container.scrollLeft === container.clientWidth;
+        if (isBottom && hasMore && !loading) {
+          setPage((prevPage) => prevPage + 1);
+        }
+      }
+    };
+
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, [hasMore, loading]);
+
   return (
     <div
       className='relative min-h-screen p-4'
@@ -42,14 +65,21 @@ const CatsListing = () => {
         backgroundPosition: 'center',
       }}
     >
-      <h1 className='text-2xl text-white font-bold mb-4 text-center'>Cats Listing</h1>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
-        {cats.slice(0, 4).map((cat) => {
-          // Split the temperament into an array and take the first three elements
+      <h1 className='text-2xl text-white font-bold mb-4'>Cats around us</h1>
+      <div
+        ref={containerRef}
+        className='flex overflow-x-auto space-x-4 pb-4'
+        style={{ scrollSnapType: 'x mandatory' }}
+      >
+        {cats.map((cat) => {
           const temperamentList = cat.temperament.split(',').slice(0, 3);
 
           return (
-            <div key={cat.id} className='bg-white p-4 rounded-lg shadow-md h-[550px] flex flex-col mt-5'>
+            <div
+              key={cat.id}
+              className='flex-none bg-white p-4 rounded-lg shadow-md w-[300px] h-[550px] flex flex-col snap-start'
+              style={{ scrollSnapAlign: 'start' }}
+            >
               <img src={cat.image || 'https://via.placeholder.com/150'} alt={cat.name} className='w-full h-56 object-cover rounded-lg mb-2' />
               <div className='flex flex-col flex-grow'>
                 <h2 className='text-xl font-semibold mb-2'>{cat.name}</h2>
@@ -80,7 +110,7 @@ const CatsListing = () => {
           );
         })}
         {loading && (
-          <div className='col-span-full flex items-center justify-center p-4'>
+          <div className='flex-none bg-white p-4 rounded-lg shadow-md w-[300px] h-[550px] flex items-center justify-center'>
             <FaSpinner className='text-blue-500 animate-spin' size={24} />
           </div>
         )}
