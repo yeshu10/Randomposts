@@ -45,7 +45,7 @@ const RandomUserProfile = () => {
           {user && (
             <div className='text-center relative'>
               {/* Title overlay */}
-              <div className='absolute -top-2 right-16 bg-black text-white px-2 py-1 rounded-lg text-sm font-semibold'>
+              <div className='absolute -top-2 right-16 bg-black text-white px-2 py-1 rounded-lg text-sm font-semibold transform -translate-x-6'>
                 {user.name.title} {/* Display title */}
               </div>
               <img src={user.picture.large || 'https://via.placeholder.com/150'} alt="User" className='rounded-full w-32 h-32 mb-4 mx-auto' />            
