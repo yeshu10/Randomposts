@@ -44,15 +44,28 @@ const CatsListing = () => {
       }
     };
 
+    const handleKeyDown = (event) => {
+      const container = containerRef.current;
+      if (container) {
+        if (event.key === 'ArrowRight') {
+          container.scrollBy({ left: 300, behavior: 'smooth' });
+        } else if (event.key === 'ArrowLeft') {
+          container.scrollBy({ left: -300, behavior: 'smooth' });
+        }
+      }
+    };
+
     const container = containerRef.current;
     if (container) {
       container.addEventListener('scroll', handleScroll);
+      window.addEventListener('keydown', handleKeyDown);
     }
 
     return () => {
       if (container) {
         container.removeEventListener('scroll', handleScroll);
       }
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [hasMore, loading]);
 
@@ -68,7 +81,7 @@ const CatsListing = () => {
       <h1 className='text-2xl text-white font-bold mb-4'>Cats around us</h1>
       <div
         ref={containerRef}
-        className='flex overflow-x-auto space-x-4 pb-4'
+        className='flex overflow-x-auto space-x-4 pb-4 scrollbar-hidden'
         style={{ scrollSnapType: 'x mandatory' }}
       >
         {cats.map((cat) => {
