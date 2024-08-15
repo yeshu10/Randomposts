@@ -78,7 +78,7 @@ const CatsListing = () => {
         backgroundPosition: 'center',
       }}
     >
-      <h1 className='text-2xl text-white font-bold mb-4'>Cats around us</h1>
+      <h1 className='text-[32px] text-white font-bold mb-4'>Cats around us</h1>
       <div
         ref={containerRef}
         className='flex overflow-x-auto space-x-4 pb-4 scrollbar-hidden'
@@ -89,33 +89,37 @@ const CatsListing = () => {
 
           return (
             <div
-              key={cat.id}
-              className='flex-none bg-white p-4 rounded-lg shadow-md w-[300px] h-[550px] flex flex-col snap-start'
-              style={{ scrollSnapAlign: 'start' }}
-            >
-              <img src={cat.image || 'https://via.placeholder.com/150'} alt={cat.name} className='w-full h-56 object-cover rounded-lg mb-2' />
-              <div className='flex flex-col flex-grow'>
+  key={cat.id}
+  className='flex-none bg-white p-0 rounded-lg shadow-md w-[350px] h-[550px] flex flex-col snap-start mt-8' 
+  style={{ scrollSnapAlign: 'start' }}
+>
+  <img
+    src={cat.image || 'https://via.placeholder.com/150'}
+    alt={cat.name}
+    className='w-full h-56 object-cover rounded-lg mb-2'
+  />
+              <div className=' p-4 flex flex-col flex-grow'>
                 <h2 className='text-xl font-semibold mb-2'>{cat.name}</h2>
                 <p className='text-sm mb-2 overflow-hidden h-20'>
                   {cat.description.length > 100
-                    ? `${cat.description.substring(0, 100)}...`
+                    ? `${cat.description.substring(0, 170)}...`
                     : cat.description}
                 </p>
                 <p className='text-sm mb-2'>
-                  <strong>Origin:</strong> {cat.origin}
+                  <i>Origin:</i> <span className="ml-6">{cat.origin}</span>
                 </p>
                 <div className='text-sm mb-2'>
-                  <strong>Temperament:</strong>
+                  <i>Temperament:</i>
                   <div className='flex flex-wrap gap-2 mt-1'>
                     {temperamentList.map((temp, index) => (
-                      <span key={index} className='bg-gray-200 text-gray-800 py-1 px-3 rounded-full'>
+                      <span key={index} className='bg-gray-200 text-gray-800 py-1 px-3 rounded-full hover:bg-purple-300'>
                         {temp}
                       </span>
                     ))}
                   </div>
                 </div>
                 <p className='text-sm mb-2'>
-                  <strong>Life Span:</strong> {cat.life_span}
+                  <i>Life Span:</i> <span className="ml-6">{cat.life_span}</span>
                 </p>
                 <a href={cat.vetstreet_url} className='text-blue-500' target="_blank" rel="noopener noreferrer">Learn More</a>
               </div>
