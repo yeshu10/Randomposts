@@ -6,6 +6,7 @@ import { MdVerified } from 'react-icons/md';
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 import { format } from 'date-fns'; // Import date-fns
 import cup from '../assets/cup-logo.svg'; // Import Chaicode logo
+import background from '../assets/twitter-pattern.webp';
 
 const RandomJokeTweet = () => {
   const [joke, setJoke] = useState(null);
@@ -34,7 +35,15 @@ const RandomJokeTweet = () => {
   const formattedViews = views.toLocaleString(); 
 
   return (
-    <div className='relative flex items-center justify-center min-h-screen bg-gray-100 p-4'>
+    <div
+      className='relative flex items-center justify-center min-h-screen p-4'
+      style={{
+        backgroundImage: `url(${background})`,
+        backgroundSize: 'cover', // Ensure the image covers the entire background
+        backgroundRepeat: 'no-repeat', // Prevent repeating the background image
+        backgroundPosition: 'center', // Center the background image
+      }}
+    >
       <div className='w-full max-w-lg bg-black text-white rounded-lg shadow-lg'>
         {/* Header with Back button and Post label */}
         <div className='flex items-center justify-between p-4 border-b border-gray-800'>

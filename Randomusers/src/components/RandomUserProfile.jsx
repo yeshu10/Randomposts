@@ -30,7 +30,7 @@ const RandomUserProfile = () => {
   return (
     <div className='relative min-h-screen bg-cover bg-center' style={{ backgroundImage: `url(${background})` }}>
       <div className='flex items-center justify-center min-h-screen p-4'>
-        <div className='relative bg-purple-300 p-6 rounded-lg text-black w-full max-w-md h-3/4 border-8 border-white m-8'>
+        <div className='relative bg-purple-300 p-6 rounded-xl text-black w-full max-w-md h-3/4 border-8 border-white m-8'>
           <div className='absolute top-4 left-4'>
             <button className='text-black hover:text-gray-600'>
               <FaArrowLeft size={24} />
