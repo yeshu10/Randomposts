@@ -3,6 +3,9 @@
 
 A React-based application featuring three unique components: `RandomUserProfile`, `RandomJokeTweet`, and `CatsListing`. This project demonstrates dynamic data fetching from various APIs, wrapped in a modern and responsive UI.
 
+## ✨ Deployed link
+https://postsrandom.vercel.app/
+
 ## ✨ Features
 
 ### 📋 Random User Profile
