@@ -47,3 +47,6 @@ The Cat API: Offers detailed information on cat breeds.
 
 Screenshots:
 
+![Screenshot (457)](https://github.com/user-attachments/assets/f0f04a0c-e6cd-4f82-8e92-c9b69e076850)
+![Screenshot (459)](https://github.com/user-attachments/assets/93e15f65-4e62-4517-aebb-f77f1f99b466)
+![Screenshot (458)](https://github.com/user-attachments/assets/4322e88f-552f-4060-985b-7d8c7bc3d8cc)
