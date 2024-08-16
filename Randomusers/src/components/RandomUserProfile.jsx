@@ -55,7 +55,7 @@ const RandomUserProfile = () => {
           {user && (
             <div className='text-center relative'>
               {/* Title overlay */}
-              <div className='absolute top-[-20px] right-4 bg-black text-white px-2 py-1 rounded-lg text-sm font-semibold transform -translate-x-4 md:-translate-x-16'>
+              <div className='absolute top-[-20px] right-6 bg-black text-white px-2 py-1 rounded-lg text-sm font-semibold transform -translate-x-4 md:-translate-x-10'>
                 {user.name.title} {/* Display title */}
               </div>
               <img src={user.picture.large || 'https://via.placeholder.com/150'} alt="User" className='rounded-full w-32 h-32 mb-4 mx-auto' />            
@@ -66,7 +66,7 @@ const RandomUserProfile = () => {
 
               <div className='flex flex-wrap items-center justify-center mb-4 space-x-4 '>
                 <a href={`https://www.google.com/maps?q=${user.location.street.number} ${user.location.street.name}, ${user.location.city}, ${user.location.state}, ${user.location.country}`} target="_blank" rel="noopener noreferrer" className='flex items-center space-x-2'>
-                  <div className='inline-flex items-center justify-center w-6 h-6 bg-black border-black file:text-white rounded-full'>
+                  <div className='inline-flex items-center justify-center w-6 h-6 bg-black text-white rounded-full'>
                     <FaMapMarkerAlt size={14} />
                   </div>
                   <span className='font-semibold'>Location</span>
